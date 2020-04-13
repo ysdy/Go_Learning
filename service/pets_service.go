@@ -8,21 +8,10 @@ import (
 // User is alias of entity.Pet struct
 type Pet entity.Pet
 
-// Service procides pet's behavior
-//type PetService struct{}
-type PetService interface {
-	List() ([]Pet, error)
-}
-
-func NewPetService() PetService {
-	return &petService{}
-}
-
-type petService struct {
-}
+type PetService struct{}
 
 // List is get all Pet
-func (s petService) List() ([]Pet, error) {
+func (s PetService) List() ([]Pet, error) {
 	db := db.GetDB()
 	var u []Pet
 	db.Find(&u)
