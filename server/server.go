@@ -3,7 +3,6 @@ package server
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/ysdy/Go_Learning/controller"
-	"github.com/ysdy/Go_Learning/service"
 )
 
 // Init is initialize server
@@ -17,7 +16,7 @@ func router() *gin.Engine {
 
 	p := r.Group("/api/v1")
 	{
-		pet_ctrl := controller.PetController{Service: service.NewPetService()}
+		var pet_ctrl controller.PetController
 		p.GET("/pets", pet_ctrl.List)
 	}
 	return r
