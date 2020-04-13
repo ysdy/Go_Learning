@@ -9,12 +9,11 @@ import (
 
 // Controller is pet controlller
 type PetController struct {
+	Petservice service.PetService
 }
 
-// List action: GET /pets
 func (pc PetController) List(c *gin.Context) {
-	var sv service.PetService
-	p, err := sv.List()
+	p, err := pc.Petservice.List()
 
 	if err != nil {
 		c.AbortWithStatus(404)
