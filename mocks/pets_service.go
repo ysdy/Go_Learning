@@ -6,7 +6,7 @@ package mocks
 
 import (
 	gomock "github.com/golang/mock/gomock"
-	service "github.com/ysdy/Go_Learning/service"
+	entity "github.com/ysdy/Go_Learning/entity"
 	reflect "reflect"
 )
 
@@ -34,10 +34,10 @@ func (m *MockPetService) EXPECT() *MockPetServiceMockRecorder {
 }
 
 // List mocks base method.
-func (m *MockPetService) List() ([]service.Pet, error) {
+func (m *MockPetService) List() ([]entity.Pet, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "List")
-	ret0, _ := ret[0].([]service.Pet)
+	ret0, _ := ret[0].([]entity.Pet)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }

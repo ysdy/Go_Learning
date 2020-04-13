@@ -4,8 +4,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/assert"
+	"github.com/ysdy/Go_Learning/entity"
 	"github.com/ysdy/Go_Learning/mocks"
-	"github.com/ysdy/Go_Learning/service"
 	"net/http/httptest"
 	"testing"
 )
@@ -17,7 +17,7 @@ func TestPetList(t *testing.T) {
 	c, _ := gin.CreateTestContext(httptest.NewRecorder())
 
 	serviceMock := mocks.NewMockPetService(ctrl)
-	u := []service.Pet{
+	u := []entity.Pet{
 		{Id: "test_id1", Name: "test name1"},
 		{Id: "test_id2", Name: "test name2"},
 	}

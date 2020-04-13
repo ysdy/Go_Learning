@@ -1,27 +1,24 @@
 package service
 
 import (
-	"github.com/ysdy/Go_Learning/db"
 	"github.com/ysdy/Go_Learning/entity"
 )
 
-// User is alias of entity.Pet struct
-type Pet entity.Pet
-
 type PetService interface {
-	List() ([]Pet, error)
+	List() ([]entity.Pet, error)
 }
 
-type petService struct{}
+type petService struct {
+	petRepository entity.PetRepository
+}
 
-func NewPetService() PetService {
-	return &petService{}
+func NewPetService(db entity.PetRepository) PetService {
+	return &petService{petRepository: db}
 }
 
 // List is get all Pet
-func (s petService) List() ([]Pet, error) {
-	db := db.GetDB()
-	var u []Pet
-	db.Find(&u)
+func (s petService) List() ([]entity.Pet, error) {
+	pr := s.petRepository
+	u := pr.Find()
 	return u, nil
 }
